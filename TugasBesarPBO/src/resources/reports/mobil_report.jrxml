@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="mobil_report"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="555"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20">
+
+    <!-- PARAM -->
+    <parameter name="judul" class="java.lang.String"/>
+
+    <!-- QUERY SESUAI DATABASE -->
+    <queryString>
+        <![CDATA[
+            SELECT
+                id,
+                merk,
+                model,
+                tahun,
+                warna,
+                harga,
+                stok
+            FROM mobil
+        ]]>
+    </queryString>
+
+    <!-- FIELD -->
+    <field name="id" class="java.lang.Integer"/>
+    <field name="merk" class="java.lang.String"/>
+    <field name="model" class="java.lang.String"/>
+    <field name="tahun" class="java.lang.Integer"/>
+    <field name="warna" class="java.lang.String"/>
+    <field name="harga" class="java.lang.Double"/>
+    <field name="stok" class="java.lang.Integer"/>
+
+    <!-- TITLE -->
+    <title>
+        <band height="40">
+            <textField>
+                <reportElement x="0" y="5" width="555" height="30"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{judul}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <!-- HEADER -->
+    <columnHeader>
+        <band height="20">
+            <staticText><reportElement x="0" y="0" width="40" height="20"/><text><![CDATA[ID]]></text></staticText>
+            <staticText><reportElement x="40" y="0" width="80" height="20"/><text><![CDATA[Merk]]></text></staticText>
+            <staticText><reportElement x="120" y="0" width="100" height="20"/><text><![CDATA[Model]]></text></staticText>
+            <staticText><reportElement x="220" y="0" width="50" height="20"/><text><![CDATA[Tahun]]></text></staticText>
+            <staticText><reportElement x="270" y="0" width="70" height="20"/><text><![CDATA[Warna]]></text></staticText>
+            <staticText><reportElement x="340" y="0" width="110" height="20"/><text><![CDATA[Harga]]></text></staticText>
+            <staticText><reportElement x="450" y="0" width="105" height="20"/><text><![CDATA[Stok]]></text></staticText>
+        </band>
+    </columnHeader>
+
+    <!-- DETAIL -->
+    <detail>
+        <band height="20">
+            <textField><reportElement x="0" y="0" width="40" height="20"/><textFieldExpression><![CDATA[$F{id}]]></textFieldExpression></textField>
+            <textField><reportElement x="40" y="0" width="80" height="20"/><textFieldExpression><![CDATA[$F{merk}]]></textFieldExpression></textField>
+            <textField><reportElement x="120" y="0" width="100" height="20"/><textFieldExpression><![CDATA[$F{model}]]></textFieldExpression></textField>
+            <textField><reportElement x="220" y="0" width="50" height="20"/><textFieldExpression><![CDATA[$F{tahun}]]></textFieldExpression></textField>
+            <textField><reportElement x="270" y="0" width="70" height="20"/><textFieldExpression><![CDATA[$F{warna}]]></textFieldExpression></textField>
+            <textField><reportElement x="340" y="0" width="110" height="20"/><textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression></textField>
+            <textField><reportElement x="450" y="0" width="105" height="20"/><textFieldExpression><![CDATA[$F{stok}]]></textFieldExpression></textField>
+        </band>
+    </detail>
+
+</jasperReport>
